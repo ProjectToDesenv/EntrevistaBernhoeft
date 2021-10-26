@@ -1,7 +1,10 @@
+using Ativ.Infra.Data;
+using Ativ.Infra.Data.Transactions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +29,22 @@ namespace ApiBernhoeft
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+
+            services.AddDbContext<BernhoeftContext>(
+              options => options.use(
+                  Configuration.GetConnectionString("PetShopAPIConnectionStrings")
+                  )/*.UseLoggerFactory().EnableSensitiveDataLogging(true)*/);
+
+            //services.AddAutoMapper();
+            services.AddScoped<DbContext, BernhoeftContext>();
+
+            //services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            //services.AddSingleton<IClienteRepositorio, ClienteRepositorio>();
+            //  services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
