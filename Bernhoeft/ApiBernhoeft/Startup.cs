@@ -30,10 +30,17 @@ namespace ApiBernhoeft
         {
             services.AddControllers();
 
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+
+            //  configurando objetos
+            //var appSettingsSection = Configuration.GetSection("AppSettings");
+            //services.Configure<AppSettings>(appSettingsSection);
+
 
             services.AddDbContext<BernhoeftContext>(
-              options => options.use(
-                  Configuration.GetConnectionString("PetShopAPIConnectionStrings")
+              options => options.UseNpgsql(
+                  Configuration.GetConnectionString("BernhoftAPIConnectionStrings")
                   )/*.UseLoggerFactory().EnableSensitiveDataLogging(true)*/);
 
             //services.AddAutoMapper();
