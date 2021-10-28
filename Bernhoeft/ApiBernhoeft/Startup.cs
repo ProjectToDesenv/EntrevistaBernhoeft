@@ -39,7 +39,7 @@ namespace ApiBernhoeft
 
 
             services.AddDbContext<BernhoeftContext>(
-              options => options.UseNpgsql(
+              options => options.UseSqlServer(
                   Configuration.GetConnectionString("BernhoftAPIConnectionStrings")
                   )/*.UseLoggerFactory().EnableSensitiveDataLogging(true)*/);
 

@@ -10,7 +10,8 @@ namespace ativ.Domain.Entities
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Nascionalidade { get; set; }
-        public DateTime Naturalidade { get; set; }
+        public string Naturalidade { get; set; }
+        public string NomeMae { get; set; }
 
     }
 }
