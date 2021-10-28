@@ -6,7 +6,7 @@ namespace ativ.Domain.Entities
     public class Pessoa
     {
         [Key]
-        public int idPessoa { get; set; }
+        public int IdPessoa { get; set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Nascionalidade { get; set; }
