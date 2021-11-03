@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiBernhoeft\ApiBernhoeft.csproj" />
     <ProjectReference Include="..\ativ.Domain\ativ.Domain.csproj" />
   </ItemGroup>
 </Project>
