@@ -11,5 +11,8 @@ namespace Ativ.Infra.Data
 
         public DbSet<Pessoa> Pessoa { get; set; }
 
+
+      
+
     }
 }

@@ -1,18 +1,39 @@
 using ApiBernhoeft.Repository;
 using ativ.Domain.Entities;
+using Ativ.Infra.Data;
 using Ativ.Infra.Data.Transactions;
 using Google.Cloud.Functions.Framework;
 using Google.Cloud.Functions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Threading.Tasks;
 
 namespace CloudHttpFunction
 {
+
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureServices(WebHostBuilderContext context, IServiceCollection services)
+        {
+            services.AddDbContext<BernhoeftContext>(option => option.UseSqlServer("Server=34.71.221.150;Database=Avaliacao;User Id=user_avaliacao;Password=pass_avaliacao"));
+            services.AddScoped<DbContext, BernhoeftContext>();
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IHttpFunction, Function>();
+        }
+      
+    }
+
+    [FunctionsStartup(typeof(Startup))]
     public class Function : IHttpFunction
     {
 
-        private IPessoaRepository _pessoaRepository;
-        private IUnitOfWork _iUnitOfWork;
+        public IPessoaRepository _pessoaRepository;
+        public IUnitOfWork _iUnitOfWork;
 
         public Function(IPessoaRepository pessoaRepository, IUnitOfWork iUnitOfWork)
         {
@@ -20,11 +41,11 @@ namespace CloudHttpFunction
             _iUnitOfWork = iUnitOfWork;
         }
 
-        public class Startup : FunctionsStartup
-        {
-            // Virtual methods in the base class are overridden
-            // here to perform customization.
-        }
+        //public class Startup : FunctionsStartup
+        //{
+        //    // Virtual methods in the base class are overridden
+        //    // here to perform customization.
+        //}
 
         //ICloudEventFunction
         /*

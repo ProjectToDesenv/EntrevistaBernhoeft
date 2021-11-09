@@ -1,3 +1,4 @@
+using ApiBernhoeft.Repository;
 using Ativ.Infra.Data;
 using Ativ.Infra.Data.Transactions;
 using Microsoft.AspNetCore.Builder;
@@ -50,8 +51,10 @@ namespace ApiBernhoeft
             //services.AddSingleton<IClienteRepositorio, ClienteRepositorio>();
             //  services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            //services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
-           
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
+
+            services.AddHttpContextAccessor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
