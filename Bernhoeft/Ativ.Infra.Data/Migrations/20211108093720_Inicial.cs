@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ativ.Infra.Data.Migrations
 {
-    public partial class init : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,16 +11,17 @@ namespace Ativ.Infra.Data.Migrations
                 name: "Pessoa",
                 columns: table => new
                 {
-                    idPessoa = table.Column<int>(type: "int", nullable: false)
+                    IdPessoa = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Nascionalidade = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Naturalidade = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Naturalidade = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomeMae = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pessoa", x => x.idPessoa);
+                    table.PrimaryKey("PK_Pessoa", x => x.IdPessoa);
                 });
         }
 

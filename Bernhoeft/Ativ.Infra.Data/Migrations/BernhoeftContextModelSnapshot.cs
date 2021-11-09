@@ -21,7 +21,7 @@ namespace Ativ.Infra.Data.Migrations
 
             modelBuilder.Entity("ativ.Domain.Entities.Pessoa", b =>
                 {
-                    b.Property<int>("idPessoa")
+                    b.Property<int>("IdPessoa")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -41,7 +41,7 @@ namespace Ativ.Infra.Data.Migrations
                     b.Property<string>("NomeMae")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("idPessoa");
+                    b.HasKey("IdPessoa");
 
                     b.ToTable("Pessoa");
                 });

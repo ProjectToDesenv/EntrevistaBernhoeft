@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ativ.Infra.Data.Migrations
 {
     [DbContext(typeof(BernhoeftContext))]
-    [Migration("20211028090627_atualizacaoCampo")]
-    partial class atualizacaoCampo
+    [Migration("20211108093720_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Ativ.Infra.Data.Migrations
 
             modelBuilder.Entity("ativ.Domain.Entities.Pessoa", b =>
                 {
-                    b.Property<int>("idPessoa")
+                    b.Property<int>("IdPessoa")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -43,7 +43,7 @@ namespace Ativ.Infra.Data.Migrations
                     b.Property<string>("NomeMae")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("idPessoa");
+                    b.HasKey("IdPessoa");
 
                     b.ToTable("Pessoa");
                 });
